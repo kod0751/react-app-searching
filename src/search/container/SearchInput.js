@@ -24,7 +24,18 @@ export default function SearchInput() {
         onChange={setKeyword}
         onSelect={gotoUser}
         style={{ width: "100%" }}
-        options={[]}
+        options={autoCompletes.map((item) => ({
+          value: item.name,
+          label: (
+            <Space>
+              <Typography.Text strong>{item.name}</Typography.Text>
+              <Typography.Text type="secondary">
+                {item.department}
+              </Typography.Text>
+              <Typography.Text>{item.tag}</Typography.Text>
+            </Space>
+          ),
+        }))}
         autoFocus
       >
         <Input
