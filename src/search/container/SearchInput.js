@@ -15,8 +15,9 @@ export default function SearchInput() {
   }
 
   const autoCompletes = useSelector((state) => state.search.autoCompletes);
-
+  console.log(autoCompletes);
   function gotoUser(value) {}
+
   return (
     <>
       <AutoComplete

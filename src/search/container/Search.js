@@ -1,7 +1,7 @@
 import { Row, Col, Typography } from "antd";
 import React from "react";
 import Settings from "../component/Settings";
-import SearchInput from "../container/SearchInput";
+import SearchInput from "./SearchInput";
 
 export default function Search() {
   return (
