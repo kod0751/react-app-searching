@@ -15,7 +15,7 @@ const store = createStore(
 );
 
 function* rootSaga() {
-  yield all([searchSaga]);
+  yield all([searchSaga()]);
 }
 sagaMiddleware.run(rootSaga);
 
