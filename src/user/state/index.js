@@ -6,10 +6,12 @@ import {
 
 export const Types = {
   SetValue: "user/SetValue",
+  FetchUser: "user/FetchUser",
 };
 
 export const actions = {
   setValue: createSetValueAction(Types.SetValue),
+  fetchUser: (name) => ({ type: Types.FetchUser, name }),
 };
 
 const INITIAL_STATE = {
