@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
 import { Col, PageHeader, Row } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../state";
 
-/**
- *
- * @param {object} param
- * @param {import('react-router').match} param.match
- */
-
-export default function User({ match }) {
+export default function User() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { name } = useParams();
+
   const user = useSelector((state) => state.user.user);
 
-  const name = match.params.name;
   useEffect(() => {
     dispatch(actions.fetchUser(name));
-  });
+  }, [name]);
 
   return (
     <>
