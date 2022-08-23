@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { Col, Descriptions, PageHeader, Row, Typography } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../state";
+import { actions, Types } from "../state";
+import useFetchInfo from "../../common/hook/useFetchInfo";
 
 export default function User() {
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ export default function User() {
 
   useEffect(() => {
     dispatch(actions.fetchUser(name));
-  }, [name]);
+  }, [dispatch, name]);
 
-  const isFetched = true;
+  const { isFetched } = useFetchInfo(Types.FetchUser);
 
   return (
     <>
