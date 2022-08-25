@@ -9,8 +9,9 @@ export default function App() {
   useEffect(() => {
     const bodyEl = document.getElementsByTagName("body")[0];
     const loadingEl = document.getElementById("init-loading");
-    bodyEl.removeChild(loadingEl);
-    console.log(bodyEl, loadingEl);
+    if (loadingEl) {
+      bodyEl.removeChild(loadingEl);
+    }
   }, []);
 
   return (
