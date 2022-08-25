@@ -1,7 +1,7 @@
 import { all, call, put, takeEvery, takeLeading } from "redux-saga/effects";
 import { actions, Types } from ".";
 import { callApi } from "../../common/util/api";
-import { makeFetchSaga } from "../../common/util/fetch";
+import { deleteApiCache, makeFetchSaga } from "../../common/util/fetch";
 
 function* fetchUser({ name }) {
   const { isSuccess, data } = yield call(callApi, {
@@ -27,6 +27,7 @@ function* fetchUpdateUser({ user, key, value }) {
   });
 
   if (isSuccess && data) {
+    deleteApiCache();
   } else {
     yield put(actions.setValue("user", user));
   }
