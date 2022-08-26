@@ -22,11 +22,13 @@ export default function User() {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user.user);
+  const userHistory = useSelector((state) => state.user.userHistory);
 
   const { name } = useParams();
 
   useEffect(() => {
     dispatch(actions.fetchUser(name));
+    dispatch(actions.fetchUserHistory(name));
   }, [dispatch, name]);
 
   const { isFetched, isSlow } = useFetchInfo(Types.FetchUser);
@@ -69,7 +71,7 @@ export default function User() {
                   <TagList />
                 </Descriptions.Item>
                 <Descriptions.Item label="수정 내역">
-                  <History />
+                  <History items={userHistory} />
                 </Descriptions.Item>
               </Descriptions>
             )}
