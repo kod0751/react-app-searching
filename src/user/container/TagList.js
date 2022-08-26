@@ -1,5 +1,5 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { Input, Tag } from "antd";
+import { Input, message, Tag } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../state";
@@ -16,7 +16,24 @@ export default function TagList() {
     setTempTag("");
   }
 
-  function onSave() {}
+  function onSave() {
+    if (!tempTag) {
+      setIsAdd(false);
+    } else if (tags.includes(tempTag)) {
+      message.error("이미 같은 태그가 있습니다.");
+    } else {
+      const newTag = user?.tag ? `${user.tag}, ${tempTag}` : tempTag;
+      dispatch(
+        actions.fetchUpdateUser({
+          user,
+          key: "tag",
+          value: newTag,
+          fetchKey: "tag",
+        })
+      );
+      setIsAdd(false);
+    }
+  }
 
   function onDelete(tag) {
     const newTag = tags.filter((item) => item !== tag).join(", ");
