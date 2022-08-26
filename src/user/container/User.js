@@ -1,13 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Col,
-  Descriptions,
-  PageHeader,
-  Row,
-  Space,
-  Spin,
-  Typography,
-} from "antd";
+import { Col, Descriptions, PageHeader, Row, Typography } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { actions, Types } from "../state";
@@ -31,7 +23,7 @@ export default function User() {
     dispatch(actions.fetchUserHistory(name));
   }, [dispatch, name]);
 
-  const { isFetched, isSlow } = useFetchInfo(Types.FetchUser);
+  const { isFetched } = useFetchInfo(Types.FetchUser);
 
   return (
     <>

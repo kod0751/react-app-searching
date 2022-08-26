@@ -28,6 +28,7 @@ function* fetchUpdateUser({ user, key, value }) {
 
   if (isSuccess && data) {
     deleteApiCache();
+    yield put(actions.addHistory(data.history));
   } else {
     yield put(actions.setValue("user", user));
   }
