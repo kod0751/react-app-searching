@@ -1,12 +1,18 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons/lib/icons";
 import { Button, Form, Input } from "antd";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { actions } from "../../search/state";
 import AuthLayout from "../component/AuthLayout";
 
 export default function Login() {
+  const dispatch = useDispatch();
+  function onFinish({ username, password }) {
+    dispatch(actions.fetchLogin(username, password));
+  }
   return (
-    <AuthLayout onFinish={() => {}}>
+    <AuthLayout onFinish={onFinish}>
       <Form.Item
         name="username"
         rules={[{ required: true, message: "Please input your Username!" }]}
