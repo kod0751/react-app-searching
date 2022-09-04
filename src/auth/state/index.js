@@ -9,6 +9,7 @@ export const Types = {
   SetValue: "auth/SetValue",
   FetchLogin: "auth/FetchLogin",
   SetUser: "auth/SetUser",
+  FetchSignup: "auth/FetchSignup",
 };
 
 export const actions = {
@@ -21,6 +22,10 @@ export const actions = {
   setUser: (name) => ({
     type: Types.SetUser,
     name,
+  }),
+  fetchSignup: (email) => ({
+    type: Types.FetchSignup,
+    email,
   }),
 };
 

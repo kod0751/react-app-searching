@@ -3,8 +3,8 @@ import { Button, Form, Input } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { actions } from "../state";
 import AuthLayout from "../component/AuthLayout";
+import { actions } from "../state";
 
 export default function Login() {
   const dispatch = useDispatch();
