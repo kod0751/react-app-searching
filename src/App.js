@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "antd/dist/antd.min.css";
 import { Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { actions as authActions } from "./auth/state";
 
 import Search from "./search/container/Search";
 import User from "./user/container/User";
@@ -15,6 +17,12 @@ export default function App() {
       bodyEl.removeChild(loadingEl);
     }
   }, []);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.fetchUser());
+  }, [dispatch]);
 
   return (
     <>

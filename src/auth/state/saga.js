@@ -32,6 +32,16 @@ function* fetchSignup({ email }) {
   }
 }
 
+function* fetchUser() {
+  const { isSuccess, data } = yield call(callApi, {
+    url: "/auth/user",
+  });
+
+  if (isSuccess && data) {
+    yield put(actions.setUser(data.name));
+  }
+}
+
 export default function* () {
   yield all([
     takeLeading(
@@ -41,6 +51,10 @@ export default function* () {
     takeLeading(
       Types.FetchSignup,
       makeFetchSaga({ fetchSaga: fetchSignup, canCache: false })
+    ),
+    takeLeading(
+      Types.FetchUser,
+      makeFetchSaga({ fetchSaga: fetchUser, canCache: false })
     ),
   ]);
 }
