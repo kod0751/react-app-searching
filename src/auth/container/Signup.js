@@ -12,7 +12,7 @@ export default function Signup() {
     dispatch(actions.fetchSignup(email));
   }
   return (
-    <AuthLayout onFinish={() => {}}>
+    <AuthLayout onFinish={onFinish}>
       <Form.Item
         name="name"
         rules={[
