@@ -4,9 +4,11 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AuthLayout from "../component/AuthLayout";
+import useBlockLoginUser from "../hook/useBlockLoginUser";
 import { actions } from "../state";
 
 export default function Login() {
+  useBlockLoginUser();
   const dispatch = useDispatch();
   function onFinish({ username, password }) {
     dispatch(actions.fetchLogin(username, password));
