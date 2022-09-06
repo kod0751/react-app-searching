@@ -11,6 +11,7 @@ export const Types = {
   SetUser: "auth/SetUser",
   FetchSignup: "auth/FetchSignup",
   FetchUser: "auth/FetchUser",
+  FetchLogout: "auth/FetchLogout",
 };
 
 export const actions = {
@@ -31,6 +32,7 @@ export const actions = {
   fetchUser: () => ({
     type: Types.FetchUser,
   }),
+  fetchLogout: () => ({ type: Types.FetchLogout }),
 };
 
 const INITIAL_STATE = {
