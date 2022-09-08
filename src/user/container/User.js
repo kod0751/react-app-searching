@@ -25,6 +25,10 @@ export default function User() {
     dispatch(actions.fetchUserHistory(name));
   }, [dispatch, name]);
 
+  useEffect(() => {
+    return () => dispatch(actions.initialize());
+  }, [dispatch]);
+
   const { isFetched } = useFetchInfo(Types.FetchUser);
 
   return (
